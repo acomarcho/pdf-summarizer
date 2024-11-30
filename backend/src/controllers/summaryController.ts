@@ -23,6 +23,7 @@ export class SummaryController {
         ? parseInt(req.body.pageStart)
         : undefined;
       const pageEnd = req.body.pageEnd ? parseInt(req.body.pageEnd) : undefined;
+      const language = req.body.language || "english";
 
       // Validate page numbers if provided
       if (pageStart && pageStart < 1) {
@@ -44,7 +45,11 @@ export class SummaryController {
       );
 
       // Generate summary
-      const summary = await this.summaryService.summarize(text, minParagraphs);
+      const summary = await this.summaryService.summarize(
+        text,
+        minParagraphs,
+        language
+      );
 
       // Count paragraphs in summary
       const paragraphCount = summary.split("\n\n").length;

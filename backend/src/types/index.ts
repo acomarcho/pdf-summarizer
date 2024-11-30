@@ -3,6 +3,7 @@ export interface SummaryRequest {
   file: Express.Multer.File;
   pageStart?: number;
   pageEnd?: number;
+  language?: string;
 }
 
 export interface SummaryResponse {

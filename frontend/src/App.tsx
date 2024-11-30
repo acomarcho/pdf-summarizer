@@ -9,6 +9,7 @@ interface SummaryResponse {
     end: number;
     total: number;
   };
+  language?: string;
 }
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [pageEnd, setPageEnd] = useState<number | undefined>();
   const [summary, setSummary] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isIndonesian, setIsIndonesian] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +38,7 @@ function App() {
     const formData = new FormData();
     formData.append("pdf", pdfFile);
     formData.append("minParagraphs", minParagraphs.toString());
+    formData.append("language", isIndonesian ? "indonesian" : "english");
     if (pageStart) formData.append("pageStart", pageStart.toString());
     if (pageEnd) formData.append("pageEnd", pageEnd.toString());
 
@@ -121,6 +124,15 @@ function App() {
             />
           </label>
         </div>
+
+        <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <input
+            type="checkbox"
+            checked={isIndonesian}
+            onChange={(e) => setIsIndonesian(e.target.checked)}
+          />
+          Generate summary in Bahasa Indonesia
+        </label>
 
         <button
           onClick={handleSubmit}
