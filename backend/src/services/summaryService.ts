@@ -47,7 +47,7 @@ export class SummaryService {
         : "You are a precise summarizer. Create a detailed summary of the following text.";
 
     const response = await this.openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
@@ -75,7 +75,7 @@ export class SummaryService {
         : `Create a detailed, coherent summary with at least ${minParagraphs} paragraphs. Maintain key information and ensure logical flow.`;
 
     const response = await this.openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
