@@ -1,0 +1,15 @@
+{
+  "name": "book-summarizer",
+  "version": "1.0.0",
+  "description": "A full-stack application that generates concise summaries from PDF documents using AI, with support for both English and Bahasa Indonesia.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
